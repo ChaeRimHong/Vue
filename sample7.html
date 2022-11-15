@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <form v-on:submit.prevent="calc">
+            <h2>
+            이름 : <input type="text" v-model="name"><br>
+            국어 : <input type="number" v-model="kor"><br>
+            영어 : <input type="number" v-model="eng"><br>
+            수학 : <input type="number" v-model="mat"><br>
+            </h2>
+            <button type="submit">학점계산기</button>
+        </form>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                name:"",
+                kor:"",
+                eng:"",
+                mat:"",
+                tot:this.tot
+            },
+            methods:{
+                calc() {
+                    this.tot=parseInt(this.kor)+parseInt(this.eng)+parseInt(this.mat);
+                    alert("총점은 "+this.tot)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

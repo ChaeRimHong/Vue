@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>
+            {{ mess1 }}  <br>
+            <button @click="watchTest">여기를 클릭</button> <br>
+            {{ mess2 }} <br>
+        </h1>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                mess1 : '1번이름',
+                mess2 : '2번이름'
+            },
+            methods:{
+                watchTest() {
+                    this.mess1="1은 한라산";
+                }
+            },
+            watch:{
+                mess1(newVal, oldVal) {
+                    alert(newVal+","+oldVal);
+                    this.mess2="2는 백두산"
+                },
+                mess2(newVal,oldVal) {
+                    alert('2번 :  '+oldVal+'->'+newVal)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

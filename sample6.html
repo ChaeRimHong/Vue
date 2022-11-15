@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+    
+    <button @click="change">자료바꾸기</button><br>
+    {{ callData }} <br>
+    {{ callData }} <br>
+    {{ callData }} <br>
+
+    </div>
+
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                message:'안녕하세요~! ',
+            },
+            methods:{  //methods에서 s절대 빼면 안댐!
+                change(){
+                    this.message="홍길동입니다.";
+                }
+                /*
+                ,
+                callData() {
+                    return this.message.split('').reverse().join('') ;
+                }
+                이렇게 쓰면 위에 {{ callData() }} 이렇게 써야함. 함수니까!
+                */
+            },
+            computed:{ //캐쉬기능이 있다! (속성, 함수x)
+                callData() {
+                    return this.message.split('').reverse().join('') ;
+                }
+                
+            }
+        })
+    </script>
+</body>
+</html>

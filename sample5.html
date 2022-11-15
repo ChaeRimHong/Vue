@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+</head>
+<body>
+   <div id="app">
+        <form v-on:submit="trans">
+            <input type="number" v-model="number"><br>
+            {{number}} <br>
+            <button type="submit">전송</button>
+        </form>
+   </div>
+ 
+   <script>
+    new Vue({
+        el:'#app',
+        data:{
+            number:'number'
+        },
+        methods:{
+            trans(){
+                if(this.number>100) { alert('잘못된 점수가 입력되었습니다!') }
+                else if(this.number>=90) { alert('A학점') }
+                else if(this.number>=80) { alert('B학점') }
+                else if(this.number>=70) { alert('C학점') }
+                else if(this.number>=60) { alert('D학점') }
+                else if(this.number>=0) { alert('F학점') }
+            }
+        }
+    })
+   </script>
+</body>
+</html>
