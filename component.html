@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,22 +8,86 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
 </head>
+
 <body>
     <div id="app1">
-
+        <h1>
+            <h1>
+                <glo_comp></glo_comp>
+            </h1>
+            <!--
+            패스워드 : {{ password }} <br>
+            <button @click="pwchange">패스워드변경</button>
+            <hr>
+            -->
+        </h1>
     </div>
-    
-    <div id="ap2">
 
+    <div id="app2">
+        <h1>
+            <glo_comp></glo_comp>
+        </h1>
     </div>
 
     <script>
-        new Vue({
-            el:'#app1',
-            data:{
-                
+        //////////////////전역 컴포넌트 생성부분
+        Vue.component('glo_comp', {
+            template: `<div>
+            패스워드 : {{ password }} <br>
+            <button @click="pwchange">패스워드변경</button>
+            <hr>
+                </div>`,
+            data() {
+                return {password: "12345"}
+            },
+            methods: {
+                pwchange() {
+                    this.password = "56789";
+                }
             }
+        })
+        ////////////////
+
+        //////////////////지역컴포넌트 생성부분
+
+        const local ={
+            template: `<div>
+            패스워드 : {{ password }} <br>
+            <button @click="pwchange">패스워드변경</button>
+            <hr>
+                </div>`,
+            data() {
+                return {password: "12345"}
+            },
+            methods: {
+                pwchange() {
+                    this.password = "56789";
+                }
+            }
+        }
+        /////////////////////
+        new Vue({
+            components:{
+                'glo_comp':local
+            },
+            el: '#app1'
+            /*
+            ,
+            data: {
+                password: "12345"
+            },
+            methods: {
+                pwchange() {
+                    this.password = "56789";
+                }
+            }
+            */
+        })
+        new Vue({
+            el: '#app2',
+
         })
     </script>
 </body>
+
 </html>

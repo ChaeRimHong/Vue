@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,43 +9,45 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
 
 </head>
+
 <body>
     <div id="app1">
         <h1>
-       <gloval_cokmp></gloval_cokmp>
-    </h1>
-       <hr>
+            <gloval_cokmp></gloval_cokmp>
+        </h1>
+        <hr>
     </div>
-    
+
     <div id="app2">
         <h1>
-        <gloval_cokmp></gloval_cokmp>
-    </h1>
+            <gloval_cokmp></gloval_cokmp>
+        </h1>
     </div>
     <script>
         /////////// 전역 컴퍼넌트  생성
-        Vue.component('gloval_cokmp', {  
+        Vue.component('gloval_cokmp', {
             template: `<div>이름 :  {{name}}<br>
         <button @click="namechang">이름바꾸기</button><br>  </div>`,
-        data(){
-                return {  name:'홍길동'}
-                },
-                methods:{
-                    namechang(){
-                        this.name="한라산";
-                    }
+            data() {
+                return { name: '홍길동' }
+            },
+            methods: {
+                namechang() {
+                    this.name = "한라산";
                 }
+            }
         })
         ///////////////
         new Vue({
-            el:'#app1',          
+            el: '#app1',
 
         })
         new Vue({
-            el:'#app2',
-            
+            el: '#app2',
+
         })
     </script>
-    
+
 </body>
+
 </html>

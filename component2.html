@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app1">
+        <h1>--app1 지역 local--</h1>
+        <glo_comp></glo_comp>
+    </div>
+
+    <div id="app2">
+        <h1>--app2 전역 comp--</h1>
+        <glo_comp></glo_comp>
+    </div>
+
+    <script>
+        Vue.component('glo_comp', {
+            template: `<div>
+                <h1>
+            패스워드 : {{ pw }} <br>
+            전화번호 : {{ tel }} <br>
+        </h1>
+        <button @click="change">바꾸기</button> <br>
+        <hr>
+                </div>`,
+            data() {
+                return {
+                    pw: "1111",
+                    tel: "010-1111-1111"
+                }
+            },
+            methods: {
+                change() {
+                    this.pw = "2222";
+                    this.tel = "010-2222-2222";
+                }
+            }
+        })
+
+        const local = {
+            template: `<div>
+                <h1>
+            패스워드 : {{ pw }} <br>
+            전화번호 : {{ tel }} <br>
+        </h1>
+        <button @click="change">바꾸기</button> <br>
+        <hr>
+                </div>`,
+            data() {
+                return {
+                    pw: "1111",
+                    tel: "010-1111-1111"
+                }
+            },
+            methods: {
+                change() {
+                    this.pw = "2222";
+                    this.tel = "010-2222-2222";
+                }
+            }
+        }
+        /*
+                new Vue({
+                    el: '#app1',
+                    data: {
+                        pw: "1111",
+                        tel: "010-1111-1111"
+                    },
+                    methods: {
+                        change() {
+                            this.pw = "2222";
+                            this.tel = "010-2222-2222";
+                        }
+                    }
+                })
+        */
+        new Vue({
+            component:{
+                'glo_comp':local
+            },
+            el: '#app1',
+
+        })
+        new Vue({
+            el: '#app2',
+
+        })
+
+    </script>
+</body>
+
+</html>
