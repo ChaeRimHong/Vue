@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app1">
+        <h1> 이름 : {{name}} </h1>
+        <button @click="changeName1">이름 바꾸기1</button> <br>
+        
+    </div>
+   
+    
+    <div id="app2">
+        
+        <h1> 이름 : {{name}} </h1>
+        <button @click="changeName2">이름 바꾸기2</button> <br>
+    </div>
+  
+<!-- ------------------------상수화---------------------- -->
+    <script>
+        // 뷰1
+        // const 가 상수화 하는거임
+        const pp1=new Vue({
+            el:'#app1',
+            data:{
+                name:'홍길동',
+            },
+            methods:{
+                changeName1() {
+                    this.name="희동이";
+                    pp2.name="둘리";
+                }
+            }
+        })
+        
+        // 뷰2
+        const pp2=new Vue({
+            el:'#app2',
+            data:{
+                name:'고길동'
+            },
+            methods:{
+                changeName2() {
+                    pp1.name="또치";
+                    this.name="도우너";
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>
