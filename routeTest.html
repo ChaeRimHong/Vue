@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!--1번-->
+        <router-link to="/main">메인으로 이동</router-link>
+        <router-link to="/login">로그인으로 이동</router-link>
+        <!--2번-->
+        <router-view></router-view>
+        <!--위에서 지정한 url값에 따라 이동-->
+    </div>
+
+    <script>
+        //3번 main/login에 따른 지역 컴포넌트 내용 만들기
+        const Main = { template: `<div>메인으로 이동</div>` }
+        const Login = { template: `<div>로그인으로 이동</div>` }
+        
+        //4번 url에 따른 경로 설정
+        var routes = [
+            { path: '/main', component: Main },
+            { path: '/login', component: Login }
+        ];
+        
+        //5번 router정의
+        var router = new VueRouter({
+            routes
+        });
+        var app = new Vue({
+            router
+        }).$mount('#app');
+
+
+
+    </script>
+</body>
+
+</html>

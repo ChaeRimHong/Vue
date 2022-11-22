@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+</head>
+<!--
+    - 메인(상) -> 전역(하)
+    - 전역(상) -> 지역(하)
+    - props 속성 이용
+-->
+
+<body>
+    <div id="app">
+        <h1>
+            <gloComp v-bind:aaa="message"></gloComp> <!-- 4번-->
+        </h1>
+    </div>
+    
+    <script>
+        const local = {
+            props: ['aaa'],
+            template: `<div>{{aaa}}</div>`
+        };
+
+        new Vue({
+            components:{
+                'gloComp':local
+            },
+            el: '#app',
+            data: {
+                message: '지역 컴포넌트입니다. 자료 전송합니다!' //1번
+            }
+        });
+    </script>
+</body>
+
+</html>

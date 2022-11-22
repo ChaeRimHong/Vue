@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <gloval-comp ></gloval-comp> 
+       <!-- // ccc: 하위 이벤트명   bbb ;상위 메소드명  -->        
+    </div>
+    <script>
+        const eventBus = new Vue();  //이벤트 버스객체가 생성
+        //전역 컴
+        Vue.component('gloval-comp',{
+            template:`
+            <button @click="aaa">보이기</button>
+            `,
+            methods:{
+                aaa(){
+                    eventBus.$emit('tbuc','홍길동');    <!-- //이벤트 발생 -->
+                }
+            }            
+        });        
+        //메인 
+        new Vue({            
+            el:'#app',
+            data:{
+            },              
+            created(){
+                eventBus.$on('tbuc',function(value1)
+                { 
+                    alert("전송받은 이름은 "+value1);                   
+                });
+        }
+    });
+    </script>    
+</body>
+</html>
